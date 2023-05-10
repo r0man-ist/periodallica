@@ -2,17 +2,13 @@ import urllib.request
 import xml.etree.ElementTree as ET
 import time
 import os
+import sys
+
 
 # getting Ark and function from command line input
 # function can be 'info' or 'write', the former will call only the getissues function, the latter the write_to_file function
 parentARK = str(sys.argv[1])
-func = str(sys.argv[2])
-if func == "info":
-    function = "getissues"
-elif func == "write"
-    function = "write_to_file"
-else
-    print ("No valid function call; this can be "write" or "info"")
+
 
 # get a list of years in which the periodical has issues in Gallica
 def getyears (parentARK):
@@ -69,8 +65,13 @@ def write_to_file(parentArk):
     print(str(countdl)+" files have been written")
     print(str(count403)+" files could not be downloaded")
 
-#write_to_file("ark:/12148/cb32814317r")
-write_to_file(parentARK)
+if str(sys.argv[2]) == "info":
+    getissues(parentARK)
+elif str(sys.argv[2]) == "write":
+    write_to_file(parentARK)
+else:
+    print ("No valid function call; this can be 'write' or 'info'")
+
 
 
 
