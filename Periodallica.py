@@ -1,14 +1,18 @@
-# script to bulk-download the ocr-ed html text of journal issues in Gallica using the parentArk from the BnF catalogue général
-# will create html files for each issue referenced in gallica (including header-only files those for which there is no OCR!)
-# might produce duplicates if there is more than 1 instance of an issue in gallica!
-# will skip issues where access to the full text is denied
-# will produce no usable result, if there is a forward to retronews. those files are easily sorted by size...
-# 20s timer built in to avoid 429-warning. this might be too generous, though.
-# it's bulky, slow and inelegant -- but seems to work...
-
 import urllib.request
 import xml.etree.ElementTree as ET
 import time
+import os
+
+# getting Ark and function from command line input
+# function can be 'info' or 'write', the former will call only the getissues function, the latter the write_to_file function
+parentARK = str(sys.argv[1])
+func = str(sys.argv[2])
+if func == "info":
+    function = "getissues"
+elif func == "write"
+    function = "write_to_file"
+else
+    print ("No valid function call; this can be "write" or "info"")
 
 # get a list of years in which the periodical has issues in Gallica
 def getyears (parentARK):
@@ -43,7 +47,12 @@ def write_to_file(parentArk):
         try:
             page = urllib.request.urlopen("https://gallica.bnf.fr/ark:/12148/"+ark+".texteBrut")
             #page = urllib.request.urlopen("https://gallica.bnf.fr/ark:/12148/bpt6k3814205s.texteBrut")# this will produce a 403 exception -- here for testing purposes
-            f = open(f"{ark}.html","wb")
+            directory = "output"
+            # Check if the directory exists
+            if not os.path.exists(directory):
+                # If it doesn't exist, create it
+                os.makedirs(directory)
+            f = open(f"output\{ark}.html","wb")
             content = page.read()
             f.write(content)
             f.close()
@@ -61,7 +70,7 @@ def write_to_file(parentArk):
     print(str(count403)+" files could not be downloaded")
 
 #write_to_file("ark:/12148/cb32814317r")
-getissues('cb326950195')
+write_to_file(parentARK)
 
 
 
