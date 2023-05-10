@@ -17,7 +17,7 @@ def getyears (parentARK):
     listyears = []
     for year in tree:
         listyears.append(year.text)
-    print("There are records for issues issues in these years:"+str(listyears))
+    print("There are records for issues in these years:"+str(listyears))
     return listyears
 
 #get a list of arks for individual issues

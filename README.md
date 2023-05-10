@@ -25,7 +25,7 @@ Starting from the entry for the "Courier lyrique et amusant, ou Passe-temps des 
 should produce
 
 ```
-There are records for issues issues in these years:['1785', '1786', '1787', '1788', '1789']
+There are records for issues in these years:['1785', '1786', '1787', '1788', '1789']
 There are records for 7 issues.
 ```
 
