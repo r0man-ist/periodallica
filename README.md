@@ -18,7 +18,7 @@ To download the actual html-files type
 
 
 ## Example
-Starting from the entry for the "Courier lyrique et amusant, ou Passe-temps des toilettes" in the [Catalogue général](https://catalogue.bnf.fr/ark:/12148/cb327515088), copy the ARK either from the catalogue entry or the URL. **ONly copy the string after "ark:/12148/"**, in this case: "cb327515088".
+Starting from the entry for the "Courier lyrique et amusant, ou Passe-temps des toilettes" in the [Catalogue général](https://catalogue.bnf.fr/ark:/12148/cb327515088), copy the ARK either from the catalogue entry or the URL. **Only copy the string after "ark:/12148/"**, in this case: "cb327515088".
 
 ```python Periodallica.py cb327515088 info```
 
